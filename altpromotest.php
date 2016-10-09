@@ -90,15 +90,29 @@ class AltpromoTest extends Module {
      */
     public function hookDisplayLeftColumn($params) {
 
-        $this->context->smarty->assign(
-
-            array(
-                'altpromotest_low'  => Configuration::get('altpromotest_low'),
-                'altpromotest_high' => Configuration::get('altpromotest_high')
-            )
-        );
+        $this->context->smarty->assign($this->getModuleConfiguration());
 
         return $this->display(__FILE__, 'altpromotest.tpl');
+    }
+
+    private function getModuleConfiguration() {
+
+        $low  = Configuration::get('altpromotest_low');
+        $high = Configuration::get('altpromotest_high');
+
+        $sql = "
+            SELECT COUNT(*) 
+            FROM "._DB_PREFIX_."product
+            WHERE   price >= '$low' AND price <= '$high'";
+
+        $count = Db::getInstance()->getValue($sql);
+
+        return array(
+            
+            'altpromotest_low'   => $low,
+            'altpromotest_high'  => $high,
+            'altpromotest_count' => $count
+        );
     }
 
     /**
