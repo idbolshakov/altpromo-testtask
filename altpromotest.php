@@ -84,6 +84,14 @@ class AltpromoTest extends Module {
      */
     public function hookDisplayLeftColumn($params) {
 
+        $this->context->smarty->assign(
+
+            array(
+                'altpromotest_low'  =>  '0',
+                'altpromotest_high' => '100'
+            )
+        );
+
         return $this->display(__FILE__, 'altpromotest.tpl');
     }
 

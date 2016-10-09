@@ -5,6 +5,11 @@
  * @author idoblshakov@gmail.com
  */
 
+.altpromotest_block--title {
+
+    text-align: center;
+}
+
 .altpromotest_block--count {
 
     text-align: center;
