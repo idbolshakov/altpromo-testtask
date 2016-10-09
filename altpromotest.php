@@ -79,9 +79,12 @@ class AltpromoTest extends Module {
 
     public function hookDisplayLeftColumn($params) {
 
+        return $this->display(__FILE__, 'altpromotest.tpl');
     }
 
     public function hookDisplayRightColumn($params) {
+
+        return $this->hookDisplayLeftColumn($params);
 
     }
 
