@@ -1,2 +1,19 @@
+/**
+ * altpromotest_block css styles
+ *
+ * @version 1.0.0
+ * @author idoblshakov@gmail.com
+ */
 
+.altpromotest_block--count {
+
+    text-align: center;
+    font-size: 5rem;
+    margin: 5rem 0;
+}
+
+.altpromotest_block--description {
+
+    text-align: center;
+}
 
