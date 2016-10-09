@@ -11,8 +11,8 @@
     <p class="altpromotest_block--description">
 
         Количество товаров со стоимостью в диапазоне
-        от {$altpromotest_low}  руб.  
-        до {$altpromotest_high} руб.
+        от {$altpromotest_low}  {$currency->sign}
+        до {$altpromotest_high} {$currency->sign}
 
     </p>
 </div>
