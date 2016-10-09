@@ -11,28 +11,33 @@ if ( !defined('_PS_VERSION_') ) {
  * Модуль тестового задания
  * на вакансию начинающий php программист
  *
+ * Модуль отвечает за сохранение в бэк-офисе 
+ * двух числовых значений "от" и "до", 
+ * а во фронт-офисе выводит в левую колонку
+ * количество товаров в базе со стоимостью в диапазоне
+ * сохраненных значений
+ *
  * @version 1.0.0
  * @author idbolshakov@gmail.com
  */
 class AltpromoTest extends Module {
 
     /**
-     * конструктор класса
+     * __construct
      *
-     * инициализация модуля
      */
     public function __construct() {
 
-    $this->name          = 'altpromotest';
-	$this->tab           = 'altpromo';
-	$this->version       = '1.0.0';
-	$this->author        = 'idbolshakov@gmail.com';
-	$this->need_instance = 0;
+        $this->name          = 'altpromotest';
+    	$this->tab           = 'altpromo';
+    	$this->version       = '1.0.0';
+    	$this->author        = 'idbolshakov@gmail.com';
+    	$this->need_instance = 0;
+    
+    	parent::__construct();
 
-	parent::__construct();
-
-	$this->displayName = $this->l('Altpromo test');
-	$this->description = $this->l('Altpromo hire test task');
+    	$this->displayName = $this->l('Altpromo test');
+    	$this->description = $this->l('Altpromo hire test task');
     }
 
     /**
@@ -41,12 +46,21 @@ class AltpromoTest extends Module {
      */
     public function install() {
 
-        if (parent::install() == false) {
+        if (Shop::isFeatureActive()) {
 
-	    return false;
-	}
+            Shop::setContext(Shop::CONTEXT_ALL);
+        }
 
-	return true;
+        if (
+            !parent::install() || 
+            !$this->registerHook('leftColumn') ||
+            !$this->registerHook('header') 
+        ) {
+
+	        return false;
+	    }
+
+	    return true;
     }
 
     /**
@@ -57,13 +71,10 @@ class AltpromoTest extends Module {
 
         if ( !parent::uninstall() ) {
 
-	    Db::getInstance()->Execute(
-
-                'DELETE FROM `' . _DB_PREFIX_ . $this->name . '`'
-	    );
-
-	    parent::uninstall();
+            return false;
         }
+
+        return true;
     }
 }
 ?>
