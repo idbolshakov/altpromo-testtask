@@ -1,5 +1,6 @@
 <?php 
 
+// security stuff
 if ( !defined('_PS_VERSION_') ) {
     
     exit;
@@ -81,6 +82,9 @@ class AltpromoTest extends Module {
      * hookDisplayLeftColumn
      *
      * hook left column
+     *
+     * получаем данные для шаблонизатора и показываем 
+     * шаблон Модуля во фронт-офисе
      */
     public function hookDisplayLeftColumn($params) {
 

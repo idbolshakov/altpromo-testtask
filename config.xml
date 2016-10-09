@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+    <module>
+        <name>altpromotest</name>
+        <displayName><![CDATA[Altpromo test]]></displayName>
+        <version><![CDATA[1.0.0]]></version>
+        <description><![CDATA[Altpromo hire test task]]></description>
+        <author><![CDATA[idbolshakov@gmail.com]]></author>
+        <tab><![CDATA[altpromo]]></tab>
+        <need_instance>0</need_instance>
+        <is_configurable>1</is_configurable>
+    </module>
