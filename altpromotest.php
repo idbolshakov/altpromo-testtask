@@ -76,6 +76,22 @@ class AltpromoTest extends Module {
 
         return true;
     }
+
+    public function hookDisplayLeftColumn($params) {
+
+    }
+
+    public function hookDisplayRightColumn($params) {
+
+    }
+
+    public function hookDisplayHeader($params) {
+
+        $this
+            ->context
+            ->controller
+            ->addCSS($this->_path.'css/altpromotest.css', 'all');
+    }
 }
 ?>
 
